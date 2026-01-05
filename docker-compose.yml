@@ -1,15 +1,40 @@
 services:
   fileserver:
-    build:
-      context: ./fileserver
-      dockerfile: Dockerfile
+    build: ./fileserver
     container_name: fileserver
     tty: true
     hostname: fileserver
     restart: always
     networks:
       vulndock:
-        ipv4_address: 172.20.0.25
+        ipv4_address: 172.20.30.25
+  php:
+    build: ./php
+    container_name: employee_info
+    tty: true
+    hostname: employee_info
+    restart: always
+    networks:
+      vulndock:
+        ipv4_address: 172.20.30.41
+  db:
+    build: ./db
+    container_name: web_db
+    tty: true
+    hostname: web_db
+    restart: always
+    networks:
+      vulndock:
+        ipv4_address: 172.20.30.42
+  react:
+    build: ./react
+    container_name: react
+    tty: true
+    hostname: react
+    restart: always
+    networks:
+      vulndock:
+        ipv4_address: 172.20.30.50
 
 networks:
   vulndock:
@@ -17,4 +42,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/24
+        - subnet: 172.20.30.0/24
