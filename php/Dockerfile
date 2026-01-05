@@ -10,4 +10,4 @@ WORKDIR /var/www/html
 COPY index.php /var/www/html/
 
 # 権限調整
-RUN chown -R www-data:www-data /var/www/htmlcd 
+RUN chown -R www-data:www-data /var/www/html
